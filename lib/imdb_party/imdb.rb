@@ -24,7 +24,7 @@ module ImdbParty
       query_params.each_pair{|key, value| query_param_array << "#{key}=#{URI.escape(value.to_s)}" }
       uri = URI::HTTP.build(:scheme => 'https', :host => base_host, :path => the_path, :query => query_param_array.join("&"))
 
-      query_param_array << "sig=app1-#{OpenSSL::HMAC.hexdigest(OpenSSL::Digest::Digest.new('sha1'), default_params["apiKey"], uri.to_s)}"
+      query_param_array << "sig=app1-#{OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha1'), default_params["apiKey"], uri.to_s)}"
 
       uri = URI::HTTP.build(:scheme => 'https', :host => base_host, :path => the_path, :query => query_param_array.join("&"))
       uri.to_s
