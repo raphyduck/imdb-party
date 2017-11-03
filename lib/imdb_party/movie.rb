@@ -14,7 +14,7 @@ module ImdbParty
       @certification = options["certificate"]["certificate"] if options["certificate"] && options["certificate"]["certificate"]
       @genres = options["genres"] || []
 	    @trailer_url = options["trailer"]["slates"][0]["url"] if(options["trailer"] && options["trailer"]["slates"] && options["trailer"]["slates"][0])
-
+      @url = "www.imdb.com/title/#{options['tconst']}/"
       # parse directors
       @directors = options["directors_summary"] ? options["directors_summary"].map { |d| Person.new(d) } : []
 
